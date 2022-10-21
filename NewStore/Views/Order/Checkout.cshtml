@@ -1,0 +1,63 @@
+﻿@model Order
+
+<div class = "container">
+    <div class = "row">
+        <div class = "col-lg-6 col-md-6 col-sm-12" style = "margin-top: 2px">
+            <h1> Оформление заказа</h1>
+            <div asp-validation-summary = "All" class = "text-danger"></div>
+            <form asp-action = "Checkout" method = "post">
+                <h2>Авторизация</h2>
+                <button class = "btn" style = "background-color: #525665;"><span style = "color:white">Войти или зарегестрироваться</span></button>
+                <h2>Контактная информация</h2>
+                <div class = "form-group">
+                    <label>Контактное лицо (ФИО)</label><input asp-for = "NameUser" class = "form-control"></input>
+                </div>
+                   <div class = "form-group">
+                    <label>Контактный телефон</label><input asp-for = "PhoneUser" class = "form-control"></input>
+                </div>
+                   <div class = "form-group">
+                    <label>Email</label><input asp-for = "EmailAddres" class = "form-control"></input>
+                </div>
+                <h2>Доставка</h2>
+                   <div class = "form-group">
+                    <label>Населенный пункт</label><input asp-for = "City" class = "form-control">
+                </div>             
+                  
+                <div class = "form-group">
+                    
+                      <div class="form-check">
+                         
+                        <label class="form-check-label"   asp-for = "Courier">
+                             <input class="form-check-input"  asp-for = "Courier"  type = "radio" value = "true" onchange = "Selected(this)" checked = "checked">
+                          Самовывозом          
+                        </label>
+                    </div>
+                    <div class="form-check">
+                                <label class="form-check-label"  asp-for = "Courier">
+                                     <input class="form-check-input" asp-for = "Courier" type = "radio" value = "false" onchange = "Selected(this)"/>
+                                  Курьером                                
+                                 </label>
+                     </div>
+                    </div>
+                    <partial name = "_Courier"></partial>
+                   
+                  <div class="input-group">
+                         <span class="input-group-text">Комментарий к заказу</span>
+                        <textarea class="form-control" aria-label="С текстовым полем" asp-for = "Comment"></textarea>
+                    </div>
+
+                    <div style = "margin-bottom: 2px; margin-top: 6px">
+                         <button class = "btn" type = "submit" style = "background-color: #525665;"><span style = "color:white">Отправить заказ</span></button>
+                    </div>
+               
+            </form>
+        </div>
+
+
+
+
+         <div class = "col-lg-6 col-md-6 col-sm-12">
+
+        </div>
+  </div>
+</div>

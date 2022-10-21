@@ -1,0 +1,28 @@
+﻿
+@model Order
+
+   <script>
+        function Selected(a) {
+         var label = a.value;
+      
+          if (label=="false") {
+          document.getElementById("Block1").style.display='block';
+        } else {
+          document.getElementById("Block1").style.display='none';
+         } 
+}
+</script>
+    <div class = "m-2" id = "Block1">
+     <div class = "form-group" >
+         <label>Улица</label><input asp-for = "Line1" class = "form-control"></input>
+      </div>
+       <div class = "form-group" >
+         <label>Дом</label><input asp-for = "Line2" class = "form-control"></input>
+          <label>Квартира</label><input asp-for = "Line3" class = "form-control"></input>
+      </div>
+      </div>
+
+    
+    
+
+
