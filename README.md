@@ -28,3 +28,6 @@ The Newton store is an online store for buying men's and women's clothing. The s
 
 [GTowerTexas](https://github.com/GTOWERTexas)
 
+## License
+
+Project NewtoneStore is distributed under the MIT license.
