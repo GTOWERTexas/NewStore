@@ -4,7 +4,7 @@
 <h5 class =  "bg-primary text-white text-center p-2">Edit role: @Model.Role.Name</h5>
 
 <form method = "post">
-    <input type = "hidden" name = "rolename" value = "@Model.Role.Name"></input>
+  <input type = "hidden" name = "rolename" value = "@Model.Role.Name"></input>
   <div asp-validation-summary = "All" class = "text-danger"></div>
   <h5 class = "bg-secondary text-white p-2">Members</h5>
   <table class = "table table-sm table-stripped table-bordered">
@@ -15,7 +15,7 @@
                 <tr><td colspan = "3">No members</td></tr>
             }
             @foreach (IdentityUser user in await Model.Members())
-           {
+            {
                <tr>
                    <td>@user.UserName</td>
                    <td>@user.Email</td>
@@ -23,7 +23,7 @@
                        <button asp-route-userid  = "@user.Id" class = "btn btn-primary btn-sm" type = "submit">Change</button>
                    </td>
                </tr>
-           }
+            }
         </tbody>
   </table>
 
@@ -36,7 +36,7 @@
                 <tr><td colspan = "3">No non-members</td></tr>
             }
             @foreach (IdentityUser user in await Model.NonMembers())
-           {
+            {
                <tr>
                    <td>@user.UserName</td>
                    <td>@user.Email</td>
@@ -44,12 +44,10 @@
                        <button asp-route-userid  = "@user.Id" class = "btn btn-primary btn-sm" type = "submit">Change</button>
                    </td>
                </tr>
-           }
+            }
         </tbody>
   </table>
-
 </form>
-
 <a class = "btn btn-secondary" asp-page  = "list">Back</a>
 
 @functions{
@@ -99,14 +97,6 @@
                 }
             }
             return Page();
-
         }
-
-
-
-
-
      }
-
-
 }
