@@ -10,6 +10,7 @@ namespace NewStore.Components
 {
     public class SelectCategory : ViewComponent
     {
+    // аналогично CartSummary
         IStoreRepository _repository;
         public SelectCategory(IStoreRepository repository)
         {
