@@ -2,7 +2,6 @@
 @model EditorModel
 
 <h5 class =  "bg-primary text-white text-center p-2">Edit role: @Model.Role.Name</h5>
-
 <form method = "post">
   <input type = "hidden" name = "rolename" value = "@Model.Role.Name"></input>
   <div asp-validation-summary = "All" class = "text-danger"></div>
