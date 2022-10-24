@@ -2,6 +2,7 @@
 @page "/admin/products/create"
 @inherits OwningComponentBase<IStoreRepository>
 
+     
     <style>
         .div.validation-message {color: rgb(220, 53, 69); font-weight: 500}
     </style>
@@ -79,6 +80,7 @@
     </EditForm>
 
 @code {
+    // редакирование свойств продукта
     public IStoreRepository Repository => Service;
     [Inject]
     public NavigationManager NavManager { get; set; }
