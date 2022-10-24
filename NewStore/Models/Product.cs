@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NewStore.Models
-{
+{   // модель товара
     public class Product
     {
         public long ProductId { get; set; }
@@ -24,7 +24,7 @@ namespace NewStore.Models
         //man = true
         public bool IsMan { get; set; } = false;
 
-        public long CategoryId { get; set; }
+        public long CategoryId { get; set; } // отношение один к одному
 
         public Category Category { get; set; }
     }
