@@ -5,25 +5,22 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
        <li><a asp-controller = "Home" asp-action = "ManList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id = "0">All Clothes</a></li>  
-      @foreach (Category cat in Model)
-     {
-         <li><a asp-controller = "Home" asp-action = "ManList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id="@cat.Id">@cat.Name</a></li>  
-     }
-       
+       @foreach (Category cat in Model)
+        {
+           <li><a asp-controller = "Home" asp-action = "ManList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id="@cat.Id">@cat.Name</a></li>  
+        }      
   </ul>
 </div>
 <div></div>
-
-
 <div class="dropdown">
   <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     WomanList
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
        <li><a asp-controller = "Home" asp-action = "WomanList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id = "0">All Clothes</a></li>  
-      @foreach (Category cat in Model)
-     {
-         <li><a asp-controller = "Home" asp-action= "WomanList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id="@cat.Id">@cat.Name</a></li>  
-     }
+        @foreach (Category cat in Model)
+        {
+           <li><a asp-controller = "Home" asp-action= "WomanList" class = "btn btn-outline-dark" style = "margin:2px;" asp-route-id="@cat.Id">@cat.Name</a></li>  
+        }
   </ul>
 </div>
