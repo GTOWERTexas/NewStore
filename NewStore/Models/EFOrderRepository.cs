@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 namespace NewStore.Models
-{
+{   // реализация интерфейса хранилища
     public class EFOrderRepository : IOrderRepository
     {
+        // получене контекста 
         private DataContext context;
         public EFOrderRepository(DataContext ctx)
         {
             context = ctx;
         }
-        public IQueryable<Order> Orders => context.Orders.Include(o => o.Lines).ThenInclude(l => l.Product);
+        // присваивание свойству Orders объектов Order из бд со связанными данными
+        public IQueryable<Order> Orders => context.Orders.Include(o => o.Lines).ThenInclude(l => l.Product); 
+        // добавление ордера в бд
         public void SaveOrder(Order order)
         {
             context.AttachRange(order.Lines.Select(l => l.Product));
