@@ -5,16 +5,15 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace NewStore.Models
-{
+{   // Модель формы заказа
     public class Order
     {
         [BindNever]
         public int OrderId { get; set; }
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
-        [Required(ErrorMessage = "Please enter a name")]
         
-       
+        [Required(ErrorMessage = "Please enter a name")]
         public string NameUser { get; set; }
         public string PhoneUser { get; set; }
 
