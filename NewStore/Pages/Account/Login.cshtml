@@ -23,10 +23,9 @@
     </div>
 </form>
 @functions{
+    // вход в приложение
     public class LoginModel : PageModel
     {
-
-
         private SignInManager<IdentityUser> signInManager;
         public LoginModel(SignInManager<IdentityUser> signinMgr)
         {
