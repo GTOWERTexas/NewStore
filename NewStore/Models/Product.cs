@@ -24,7 +24,7 @@ namespace NewStore.Models
         //man = true
         public bool IsMan { get; set; } = false;
 
-        public long CategoryId { get; set; } // отношение один к одному
+        public long CategoryId { get; set; } // у одного товара может быть лишь одна категория
 
         public Category Category { get; set; }
     }
