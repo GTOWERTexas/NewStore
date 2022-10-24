@@ -20,7 +20,8 @@
 
 <NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
 <NavLink class="btn btn-secondary" href="/admin/products">Back</NavLink>
-@code{
+@code{ // реализация CRUD с помощью Blazor
+       // получение подробностей о продукте
     [Inject]
     public IStoreRepository Repository { get; set; }
     [Parameter]
