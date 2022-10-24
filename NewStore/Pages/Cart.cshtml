@@ -5,67 +5,49 @@
 <div class = "container">
    
 @foreach (var line in Model.Cart.Lines)
-{
-   
+{ 
    <div class = "row" style = "margin-bottom: 10px; padding: 10px; border:solid; border-color: #C0C0C0; border-width:thin; border-radius:15px; width: 80%">
-      
-       
-       <div class = "col-lg-2 col-md-2" style = "align-items:center">
-           
-                 @if(line.Product.IsMan == true)
-                   {
-                      <img src="~/images/@(line.Product.Name).webp" class="img-fluid" style="width:auto;height:142px;" />
-                   } 
-       
-                    else{
-                      <img src="~/images/Woman/@(line.Product.Name).webp" class="img-fluid" style="width:auto;height:142px;" />
-                   }
-        </div>
-       
-           <div class = "col-lg-8 col-md-8">
-                <a asp-controller = "Home" asp-action = "Details" asp-route-id = "@line.Product.ProductId" style = "align-self: center; text-decoration: none;">
-                        <h2 class ="text-left" style = "color: #333333">@line.Product.Name</h2> 
-                        <br>
-                 </a>
-                  
-                 <div><span><b>(@line.Product.Size)</b></span></div> 
-                 <div> <span class = "spanprice">@line.Product.Price.ToString("c")</span></div> 
-
-                  <button class = "btn" style = "background-color:#525665"><span style = "color:white">@line.Quantity</span></button>
-           </div>
-          
-           <div class = "col-lg-2 col-md-2">
-               <form asp-page-handler = "Remove" method = "post" style = "display: flex; align-items:flex-start; justify-content:flex-end">
-                   <input type = "hidden" name = "ProductId" value = "@line.Product.ProductId"></input>
-                   <input type = "hidden" name = "returnUrl" value = "@Model.ReturnUrl"></input>
-                   <button type = "submit" class = "btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-</svg></button>
-               </form>
-               <span class="fw-lighter" style = "display: flex; align-items:flex-end; margin-top:90px; justify-content:flex-end">@((line.Quantity * line.Product.Price).ToString("c"))</span>
-
-               </div>
-       </div>
-
+     <div class = "col-lg-2 col-md-2" style = "align-items:center">      
+      @if(line.Product.IsMan == true)
+          {
+            <img src="~/images/@(line.Product.Name).webp" class="img-fluid" style="width:auto;height:142px;" />
+           }
+       else
+           {
+            <img src="~/images/Woman/@(line.Product.Name).webp" class="img-fluid" style="width:auto;height:142px;" />
+           }
+             </div>
+                 <div class = "col-lg-8 col-md-8">
+                    <a asp-controller = "Home" asp-action = "Details" asp-route-id = "@line.Product.ProductId" style = "align-self: center; text-decoration: none;">
+                     <h2 class ="text-left" style = "color: #333333">@line.Product.Name</h2> 
+                     <br>
+                    </a>
+                     <div><span><b>(@line.Product.Size)</b></span></div> 
+                     <div><span class = "spanprice">@line.Product.Price.ToString("c")</span></div> 
+                     <button class = "btn" style = "background-color:#525665"><span style = "color:white">@line.Quantity</span></button>
+                 </div>
+                    <div class = "col-lg-2 col-md-2">
+                        <form asp-page-handler = "Remove" method = "post" style = "display: flex; align-items:flex-start; justify-content:flex-end">
+                            <input type = "hidden" name = "ProductId" value = "@line.Product.ProductId"></input>
+                            <input type = "hidden" name = "returnUrl" value = "@Model.ReturnUrl"></input>
+                            <button type = "submit" class = "btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg></button>
+                        </form>
+                        <span class="fw-lighter" style = "display: flex; align-items:flex-end; margin-top:90px; justify-content:flex-end">@((line.Quantity * line.Product.Price).ToString("c"))</span>
+                        </div>
+                </div>
 }
 @if(Model.Cart.Lines.Count() > 0)
     {
-          <div class = "col-lg-3" style = "margin-left: 30px; position:fixed; top:198px; left: 1100px;">
-    <div class="card text-dark bg-light mb-3" style="max-width:85%;">
-        
-
-   <div class="card-body" style = "display:grid;">
-        
-              <span class = "card-title" style = "margin: 2px"><strong>Итого:
-                                                                      @Model.Cart.Lines.Sum(l=>l.Product.Price * l.Quantity)                                                            
-                                      </strong>   </span>
-             <a class="btn" style ="background-color: #525665; margin: 2px" href="@Model.ReturnUrl"><span style = "color:white">Continue shopping</span></a>
-              <a class="btn" style ="background-color: #525665; margin: 2px;" asp-action = "Checkout" asp-controller = "Order"><span style = "color:white">Checkout</span></a>  
-       </div>
-  </div>
-</div>
-
+      <div class = "col-lg-3" style = "margin-left: 30px; position:fixed; top:198px; left: 1100px;">
+         <div class="card text-dark bg-light mb-3" style="max-width:85%;">
+            <div class="card-body" style = "display:grid;">
+                   <span class = "card-title" style = "margin: 2px"><strong>Итого: @Model.Cart.Lines.Sum(l=>l.Product.Price * l.Quantity)</strong></span>
+                   <a class="btn" style ="background-color: #525665; margin: 2px" href="@Model.ReturnUrl"><span style = "color:white">Continue shopping</span></a>
+                   <a class="btn" style ="background-color: #525665; margin: 2px;" asp-action = "Checkout" asp-controller = "Order"><span style = "color:white">Checkout</span></a>  
+            </div>
+          </div>
+      </div>
     }
-  
-
 </div>
