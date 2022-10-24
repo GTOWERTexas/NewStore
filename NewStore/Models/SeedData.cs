@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace NewStore.Models
 {
     public static class SeedData
-    {
+    {   // заполение таблиц категорий и продуктов начальными данными
         public static void SeedDataBase(DataContext context)
         {
              context.Database.Migrate();
