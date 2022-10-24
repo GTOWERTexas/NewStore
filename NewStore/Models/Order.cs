@@ -28,11 +28,7 @@ namespace NewStore.Models
         public string Line2 { get; set; }
         public string Line3 { get; set; }
         [BindNever]
-        public bool Shipped { get; set; }
-        
-       
-       
-        
+        public bool Shipped { get; set; }  
     }
  
 
