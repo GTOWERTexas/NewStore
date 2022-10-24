@@ -7,13 +7,17 @@ namespace NewStore.Controllers
     public class OrderController : Controller
     {
         private IOrderRepository repository;
+        // внедрение зависимостей
         private Cart cart;
         public OrderController(IOrderRepository repoService, Cart cartService)
         {
             repository = repoService;
-          cart = cartService;
+            cart = cartService;
         }
+        // заполнение формы ордера
         public ViewResult Checkout() => View(new Order());
+        
+        // сохранение ордера в базе данных
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
@@ -24,8 +28,8 @@ namespace NewStore.Controllers
             if (ModelState.IsValid)
             {
                 order.Lines = cart.Lines.ToArray();
-                repository.SaveOrder(order);
-                cart.Clear();
+                repository.SaveOrder(order); // сохранение ордера
+                cart.Clear(); // очистка корзины
                 return RedirectToPage("/Completed", new { order = order.OrderId });
             }
             else
