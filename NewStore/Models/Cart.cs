@@ -24,8 +24,8 @@ namespace NewStore.Models
         public decimal ComputeTotalValue() => Lines.Sum(l=>l.Product.Price * l.Quantity); // сумма заказа
         public virtual void Clear() => Lines.Clear();
     }
-
-    public class CartLine // товар, выбранный пользователем
+    // товар, выбранный пользователем
+    public class CartLine 
     {
         public int CartLineId { get; set; }
         public Product Product { get; set; }
