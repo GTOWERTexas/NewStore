@@ -4,7 +4,7 @@
 <OrderTable TableTitle = "Shipped Orders" Orders = "ShippedOrders" ButtonLabel = "Reset" OrderSelected = "ResetOrder"></OrderTable>
 <button class = "btn btn-info" @onclick = "@(e=>UpdateData())">Refresh Data</button>
 @code{
-     public IOrderRepository Repository => Service;
+    public IOrderRepository Repository => Service;
     public IEnumerable<Order> AllOrders { get; set; }
     public IEnumerable<Order> UnshippedOrders { get; set; }
     public IEnumerable<Order>  ShippedOrders { get; set; }
