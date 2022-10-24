@@ -11,7 +11,7 @@ namespace NewStore.Models
 
         public long Id { get; set; } // идентификатор
 
-        public IEnumerable<Product> Products { get; set; } // отношение один ко многим (категрия - продукты)
+        public IEnumerable<Product> Products { get; set; } // отношение один ко многим (категория - продукты)
 
         public bool IsClothes { get; set; } = false; 
     }
