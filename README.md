@@ -23,6 +23,9 @@ The Newton store is an online store for buying men's and women's clothing. The s
 - Principles SOLID
 - ASP.NET MVC
 - Entity Framework
+- CRUD
+- Identity Core
+- Blazor
 
 ## Developers
 
