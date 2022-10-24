@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="/lib/bootstrap.min.css" />
     <link rel="stylesheet" href="/lib/fontello.css" />
     <link rel="stylesheet" href="/lib/MyStyles.css" type ="text/css" />
-    <link rel="shortcut icon" href="/lib/favicon.ico" type="image/x-icon" />
-  
+    <link rel="shortcut icon" href="/lib/favicon.ico" type="image/x-icon" /> 
 </head>
 <body>
    @if (User.IsInRole("Admins"))
@@ -18,29 +17,23 @@
         <h4 class = "bg-info text-center text-white">Administrator</h4>
     }
     <header style = "padding-bottom: 0px; padding-top: 50px; background-color:#2D2D2D; opacity:1">
-      
-
         <div class="container-fluid">
             <div class="row sizing" style="box-sizing:border-box;">
                 <div class="col-lg-2 col-md-12 col-sm-12 p-2" style="display: flex; justify-content: center; align-items: center;">
                     <a asp-controller = "Home" asp-action = "Index">
                          <img src="~/lib/img/logo.svg" />
-                    </a>
-                   
+                    </a>              
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 p-0 mr-2" style="display:flex; align-items:center;">
                    <form asp-controller = "Home" asp-action = "Index" method = "get">         
-                   @* @using (Html.BeginForm("Index", "Home", FormMethod.Get, new {@role = "searchTerm"}))*@
-     
-                     <div class="input-group text-white">
-                       <input placeholder="please search" type = "text" aria-label = "search" class="form-control text-white"  style="background-color:#434343; flex-grow:1;"
-                       name = "searchTerm"
-                         />
-                            <button type = "submit" class = "btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg></button>
-                     </div>
-                     
+                         @* @using (Html.BeginForm("Index", "Home", FormMethod.Get, new {@role = "searchTerm"}))*@
+                         <div class="input-group text-white">
+                                <input placeholder="please search" type = "text" aria-label = "search" class="form-control text-white"  style="background-color:#434343; flex-grow:1;"
+                                  name = "searchTerm" />
+                                 <button type = "submit" class = "btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+                                 </button>
+                         </div>             
                  </form>
                    @* }*@
                 </div>
@@ -52,8 +45,7 @@
             </div>
             <div class = "row">
                 <div class = "col-12 pb-0" style = "display:flex; justify-content:start; align-items:end">
-                <vc:select-category></vc:select-category>
-                 
+                <vc:select-category></vc:select-category>                 
                 </div>
             </div>
         </div>
@@ -65,7 +57,6 @@
     <script src="_framework/blazor.server.js"></script>
     <footer>
         
-    </footer>
-    
+    </footer>   
 </body>
 </html>
