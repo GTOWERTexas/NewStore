@@ -6,16 +6,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NewStore.Models
-{
+{   // реализация интерфейса хранилища товаров
     public class EFStoreRepository:IStoreRepository
     {
+        // получения доступа к контексту
         private DataContext context;
         public EFStoreRepository(DataContext ctx)
         {
             context = ctx;
         }
+        // сохраняем объекты из бд в свойствах моделей
         public IQueryable<Product> Products => context.Products;
         public IQueryable<Category> Categories => context.Categories;
+        
+        // альтернативный CRUD, который в приложение не используется(используется Blazor)
         public void CreateProduct(Product p)
         {
             context.Add(p);
