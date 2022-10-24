@@ -28,24 +28,27 @@ namespace NewStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddSessionStateTempDataProvider();
-
-            services.AddSession();
+            
+            services.AddSession(); // регистрация службы для доступа к данным сеанса
             services.AddControllersWithViews();
 
             services.AddRazorPages();
+            // Подключение к серверу базы данных
             services.AddDbContext<DataContext>(opts =>
             {
                 opts.UseSqlServer(Configuration["ConnectionStrings:NewStoreConnection"]);
                 opts.EnableSensitiveDataLogging(true);
             });
+            // Внедрение зависмостей репозиториев товаров и ордеров на покупку
             services.AddScoped<IStoreRepository, EFStoreRepository>();
             services.AddScoped<IOrderRepository, EFOrderRepository>();
             
-           
+            // Внедрение корзины для покупок
             services.AddScoped<Cart>(sp=>SessionCart.GetCart(sp));
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // получение в классе SessionCart досупа к текущему сеансу
             services.AddServerSideBlazor();
-
+            
+            // Подключение к серверу базы данных о пользователях
             services.AddDbContext<IdentityContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
 
@@ -70,10 +73,12 @@ namespace NewStore
             
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            // автоматическое инициирование запросов с сеансами
             app.UseSession();
 
            
             app.UseRouting();
+            
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -85,6 +90,7 @@ namespace NewStore
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");              
             });
+            // заполнение базы данных начальными данными
             SeedData.SeedDataBase(context);
             IdentitySeedData.CreateAdminAccount(app.ApplicationServices, Configuration);
         }
