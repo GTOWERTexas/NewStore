@@ -5,12 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using NewStore.Infrastructure;
 
 namespace NewStore.Models
-{
+{   // этот класс переопределяет методы класса Cart и сохраняет обновленное состояние в сеансе
     public class SessionCart : Cart
-    {
+    {   // этот метод позволяет объектам SessionCart себя сохранять
         public static Cart GetCart(IServiceProvider services)
         {
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session; // представление сеанса
             SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
             cart.Session = session;
             return cart;
