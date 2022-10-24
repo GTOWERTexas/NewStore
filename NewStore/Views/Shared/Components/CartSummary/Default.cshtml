@@ -1,15 +1,11 @@
 ﻿@model Cart
-<div class = "">
-  
-    
+<div class = ""> 
    <a target="blank" asp-page="/Cart" asp-route-returnurl = "@ViewContext.HttpContext.Request.PathEndQuery()" 
-   class="btn btn-primary position-relative">
-   <img class="imgr" src="~/lib/img/svg/shopping-cart.svg" /> 
-   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"> @Model.Lines.Sum(x=>x.Quantity)
-      <span class="visually-hidden">Количестов товаров</span></span>
-      <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">  @Model.ComputeTotalValue().ToString("c")
-      <span class="visually-hidden">Сумма корзины</span></span>
-   
-</a>
-
+       class="btn btn-primary position-relative">
+       <img class="imgr" src="~/lib/img/svg/shopping-cart.svg" /> 
+       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"> @Model.Lines.Sum(x=>x.Quantity)
+          <span class="visually-hidden">Количестов товаров</span></span>
+          <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-secondary">  @Model.ComputeTotalValue().ToString("c")
+          <span class="visually-hidden">Сумма корзины</span></span>   
+   </a>
 </div>
